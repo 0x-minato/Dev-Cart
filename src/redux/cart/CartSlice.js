@@ -22,26 +22,26 @@ const cartSlice = createSlice({
         state.cartArray = [...state.cartArray, action.payload];
       }
     },
-    productCardReducer: (state, action) => {
+    productCardReducer: (state, action) => (
       state.cartArray.map((product) => {
         if (product.productId === action.payload[0]) {
           product.productRepeat += action.payload[1];
         }
       });
-    },
-    productTotalReducer: (state, action) => {
+    ),
+    productTotalReducer: (state, action) => (
       state.cartArray.map((product) => {
         if (product.productId === action.payload[0]) {
           product.productTotal = action.payload[1];
         }
       });
-    },
-    productDelete: (state, action) => {
+    ),
+    productDelete: (state, action) => (
       state.cartArray.splice(action.payload, 1);
-    },
-    cartTotalReducer: (state, action) => {
+    ),
+    cartTotalReducer: (state, action) => (
       state.totalPrice = action.payload;
-    },
+    ),
   },
 });
 
