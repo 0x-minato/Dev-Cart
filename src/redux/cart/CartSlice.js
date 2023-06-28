@@ -9,15 +9,15 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    cartReducer: (state, action) => {
+    cartReducer: (state, action) => (
       let check = 0;
-      state.cartArray.map((product) => {
+      state.cartArray.map((product) => 
         if (product.productId === action.payload.productId) {
           product.productTotal += action.payload.productTotal;
           product.productRepeat += action.payload.productRepeat;
           check = 1;
         }
-      });
+      ));
       if (check == 0) {
         state.cartArray = [...state.cartArray, action.payload];
       }
