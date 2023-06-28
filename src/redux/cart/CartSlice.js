@@ -10,7 +10,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     cartReducer: (state, action) => (
-      let check = 0;
+      var check = 0;
       state.cartArray.map((product) => 
         if (product.productId === action.payload.productId) {
           product.productTotal += action.payload.productTotal;
