@@ -1,0 +1,33 @@
+@import "./styles/colors";
+
+div {
+  margin: 0;
+  box-sizing: border-box;
+  // > button {
+  //   background-color: $linkColor;
+  //   width: 4rem;
+  //   height: 2.4rem;
+  //   font-size: 1.4rem;
+  //   border: none;
+  //   cursor: pointer;
+  // }
+  // input {
+  //   height: 2.4rem;
+  //   font-size: 1.4rem;
+  //   text-align: center;
+  //   background-color: $navBackgroundColor;
+  //   border: none;
+  // }
+}
+
+body::-webkit-scrollbar {
+  width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: $backgroundColor;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: hsla(0, 0%, 94%, 0.204);
+}
