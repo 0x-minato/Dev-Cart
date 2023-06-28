@@ -1,0 +1,64 @@
+@import "../../styles/colors";
+@import "../../styles/mixins";
+
+.featured_section {
+  margin-bottom: 4rem;
+  .featured_header > h1 {
+    font-size: 4rem;
+    text-align: center;
+    color: $linkColor;
+  }
+  .featured_products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5rem;
+    text-align: center;
+    .featured_element {
+      width: 18rem;
+      background-color: $secondaryColor;
+      border-radius: 1rem;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      > h1,
+      p {
+        color: $linkColor;
+      }
+      .featured_image {
+        width: 18rem;
+        height: 14rem;
+        border-radius: 1rem 1rem 0 0;
+        transition: transform 0.5s ease;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+      .featured_stock {
+        color: lightgreen;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1025px) {
+  .featured_section {
+    .featured_header > h1 {
+      font-size: 3rem;
+    }
+    .featured_products {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 2rem;
+    }
+  }
+}
+@media screen and (max-width: 655px) {
+  .featured_section {
+    .featured_header > h1 {
+      font-size: 2.5rem;
+    }
+    .featured_products {
+      @include flexBox(center, center, column);
+      gap: 3rem;
+    }
+  }
+}

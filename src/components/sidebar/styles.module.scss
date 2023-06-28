@@ -1,0 +1,56 @@
+@import "../../styles/colors";
+@import "../../styles/mixins";
+
+.sidebar_section {
+  .sidebar_icon {
+    font-size: 2rem;
+    color: $linkColor;
+    transform: translateX(12.5rem);
+    padding-top: 1rem;
+  }
+  .sidebar_links {
+    .update_visible {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background-color: $linkColor;
+      color: black;
+      text-align: center;
+      margin: 0 1rem 1rem 0;
+    }
+    .update_hidden {
+      display: none;
+    }
+    @include flexBox(center, start, column);
+    padding: 2rem 0 0 2rem;
+    gap: 3rem;
+    a {
+      @include flexBox(center, center);
+      gap: 5px;
+      color: $linkColor;
+    }
+    a:active {
+      text-decoration: none;
+    }
+    a:link {
+      text-decoration: none;
+    }
+    .active {
+      border-bottom: 4px solid $linkColor;
+    }
+  }
+}
+@media screen and (max-width: 400px) {
+  .sidebar_section {
+    .sidebar_icon {
+      transform: translateX(10rem);
+    }
+  }
+}
+@media screen and (max-width: 346px) {
+  .sidebar_section {
+    .sidebar_icon {
+      transform: translateX(8rem);
+    }
+  }
+}

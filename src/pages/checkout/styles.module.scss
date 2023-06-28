@@ -1,0 +1,41 @@
+@import "../../styles/colors";
+@import "../../styles/mixins";
+
+.checkout {
+  height: 100vh;
+  background-color: $backgroundColor;
+  @include flexBox(center, center, column);
+  gap: 5rem;
+  > h1 {
+    text-align: center;
+    font-size: 6rem;
+    color: $linkColor;
+    margin: 0;
+  }
+  p {
+    text-align: center;
+    font-size: 6rem;
+    color: $linkColor;
+    margin: 0;
+  }
+}
+@media screen and (max-width: "770px") {
+  .checkout {
+    > h1 {
+      font-size: 4rem;
+    }
+    > p {
+      font-size: 4rem;
+    }
+  }
+}
+@media screen and (max-width: "426px") {
+  .checkout {
+    > h1 {
+      font-size: 3rem;
+    }
+    > p {
+      font-size: 3rem;
+    }
+  }
+}

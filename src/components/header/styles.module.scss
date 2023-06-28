@@ -1,0 +1,131 @@
+@use "../../styles/mixins" as *;
+@import "../../styles/colors";
+.header {
+  .update_visible {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: $linkColor;
+    color: black;
+    text-align: center;
+    margin: 0 1rem 1rem 0;
+  }
+  .update_hidden {
+    display: none;
+  }
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  background-color: $navBackgroundColor;
+  .logo_and_links {
+    > h1 {
+      font-size: 1rem;
+    }
+    > a {
+      text-decoration: none;
+      color: $linkColor;
+    }
+    @include flexBox(space-between);
+    .logo_and_title {
+      @include flexBox();
+    }
+    margin-right: 2rem;
+    .logo {
+      color: white;
+      width: 5rem;
+    }
+    .links_container {
+      @include flexBox();
+      gap: 5rem;
+      .links {
+        @include flexBox();
+        gap: 1rem;
+        color: $linkColor;
+        text-decoration: none;
+        .link_image {
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+}
+.sidebar {
+  z-index: 2;
+  width: 18rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 100%;
+  background-color: $backgroundColor;
+  transition: 850ms;
+}
+.sidebar_active {
+  z-index: 2;
+  width: 18rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background-color: $backgroundColor;
+  left: 33%;
+  transition: 350ms;
+}
+.mobileLogo {
+  display: none;
+}
+.active {
+  border-bottom: 4px solid $linkColor;
+}
+
+@media screen and (max-width: 905px) {
+  .header {
+    .logo_and_links {
+      gap: 3rem;
+      .logo_and_title {
+        gap: 0.1rem;
+      }
+      .links_container {
+        gap: 1rem;
+        .links {
+          @include flexBox();
+          gap: 1rem;
+          font-size: 0.8rem;
+        }
+      }
+    }
+    .sidebar {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 655px) {
+  .header {
+    @include flexBox(space-between);
+    width: 100%;
+    .logo_and_links {
+      .logo_and_title {
+        > h1 {
+          font-size: 1.3rem;
+        }
+      }
+      .logo {
+        width: 4rem;
+      }
+    }
+    .links {
+      display: none !important;
+    }
+  }
+  .sidebar_active {
+    left: 45%;
+  }
+  .links_container {
+    display: none;
+  }
+  .mobileLogo {
+    @include flexBox(0);
+    color: $linkColor;
+    padding-right: 1rem;
+    font-size: 2rem;
+  }
+}

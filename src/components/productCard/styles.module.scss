@@ -1,0 +1,150 @@
+@import "../../styles/colors";
+@import "../../styles/mixins";
+
+.card_section {
+  background-color: $secondaryColor;
+  width: 80rem;
+  margin: 2rem 0 2rem 0;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+.border_line {
+  width: 79rem;
+  height: 1px;
+  margin-top: 2rem;
+  background-color: grey;
+  text-align: center;
+}
+.subtotal {
+  color: $linkColor;
+  font-size: 1.5rem;
+  padding-left: 60rem;
+}
+.product_card {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-gap: 3rem;
+  background-color: $secondaryColor;
+  .product_image {
+    width: 10rem;
+  }
+  > h2 {
+    color: $linkColor;
+    font-size: 1.5rem;
+  }
+  .cart_section {
+    background-color: $secondaryColor;
+    > button {
+      background-color: $backgroundColor;
+      color: $linkColor;
+      width: 4rem;
+      height: 2.5rem;
+      font-size: 1.4rem;
+      border: none;
+      cursor: pointer;
+    }
+    input {
+      width: 10rem;
+      height: 2.4rem;
+      font-size: 1.4rem;
+      text-align: center;
+      background-color: hsla(0, 0%, 94%, 0.204);
+      color: $linkColor;
+      border: none;
+    }
+  }
+  > p {
+    color: $linkColor;
+    font-size: 1.8rem;
+  }
+  > button {
+    width: 18rem;
+    font-size: 1.4rem;
+    background-color: $backgroundColor;
+    color: $linkColor;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+  }
+}
+@media screen and (max-width: "1092px") {
+  .card_section {
+    width: 45rem;
+  }
+  .subtotal {
+    padding-left: 30rem;
+  }
+  .border_line {
+    width: 45rem;
+  }
+  .product_card {
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-gap: 2rem;
+    > button {
+      margin-top: 3rem;
+      height: 2.4rem;
+    }
+  }
+}
+@media screen and (max-width: "1413px") {
+  .card_section {
+    width: 30rem;
+  }
+  .subtotal {
+    padding-left: 10rem;
+  }
+  .border_line {
+    width: 30rem;
+  }
+  .product_card {
+    @include flexBox(center, center, column);
+    gap: 0;
+    > button {
+      margin-top: 3rem;
+      height: 2.4rem;
+    }
+  }
+}
+@media screen and (max-width: "625px") {
+  .card_section {
+    width: 18rem;
+    .input {
+      width: 6rem !important;
+    }
+  }
+  .subtotal {
+    text-align: center;
+    padding-left: 0;
+  }
+  .border_line {
+    width: 20rem;
+  }
+  .product_card {
+    @include flexBox(center, center, column);
+    gap: 0;
+    > button {
+      margin-top: 3rem;
+      height: 2.4rem;
+      width: 15rem;
+    }
+  }
+}
+@media screen and (max-width: "425px") {
+  .card_section {
+    width: 15rem;
+  }
+  .subtotal {
+    text-align: center;
+    padding-left: 0;
+  }
+  .border_line {
+    width: 15rem;
+  }
+  .product_card {
+    @include flexBox(center, center, column);
+    gap: 0;
+    > button {
+      width: 14rem;
+    }
+  }
+}

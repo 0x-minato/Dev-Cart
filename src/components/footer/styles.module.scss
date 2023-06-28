@@ -1,0 +1,15 @@
+@import "../../styles/colors";
+@import "../../styles/mixins";
+
+.footer_section {
+  background-color: $navBackgroundColor;
+  .logo_and_title {
+    @include flexBox();
+    .logo {
+      width: 5rem;
+    }
+    > h1 {
+      color: $linkColor;
+    }
+  }
+}

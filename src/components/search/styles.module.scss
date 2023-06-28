@@ -1,0 +1,77 @@
+@import "../../styles/colors";
+@import "../../styles/mixins";
+
+.section_search {
+  .form {
+    @include flexBox();
+    gap: 1rem;
+    .input {
+      > input {
+        color: black;
+        font-size: 5rem;
+        border-radius: 3rem;
+        text-indent: 3rem;
+        outline: none;
+        border: none;
+        background-color: $secondaryColor;
+      }
+    }
+    .form_button {
+      font-size: 4.2rem;
+      background-color: transparent;
+      border: none;
+      color: $linkColor;
+      cursor: pointer;
+    }
+  }
+  ::-webkit-input-placeholder {
+    font-size: 3rem;
+    color: $linkColor;
+    position: absolute;
+    padding-top: 1rem;
+  }
+}
+@media screen and (max-width: 1090px) {
+  .form {
+    gap: 1rem;
+    .input {
+      > input {
+        font-size: 2rem;
+        width: 50rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: 892px) {
+  .form {
+    gap: 1rem;
+    .input {
+      > input {
+        font-size: 2rem;
+        width: 35rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: 655px) {
+  .section_search {
+    .form {
+      gap: 0.5rem;
+      .input {
+        > input {
+          width: 16rem;
+          height: 3.5rem;
+          font-size: 3rem;
+          text-indent: 1rem;
+        }
+      }
+      .form_button {
+        font-size: 2rem;
+      }
+    }
+    ::-webkit-input-placeholder {
+      font-size: 1.8rem;
+      padding-top: 0.6rem;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@import "../../styles/colors";
+@import "../../styles/mixins";
+
+.home_section {
+  width: 100%;
+  height: 100%;
+  background-color: $backgroundColor;
+  .scrollBar {
+    padding-top: 6rem;
+  }
+  .title_and_search {
+    @include flexBox(center, center, column);
+    .title {
+      font-size: 4rem;
+      text-align: center;
+      color: $linkColor;
+    }
+  }
+}
+@media screen and (max-width: 1025px) {
+  .home_section {
+    .scrollBar {
+      padding-top: 8rem;
+    }
+    .title_and_search {
+      .title {
+        font-size: 3rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: 790px) {
+  .home_section {
+    .title_and_search {
+      .title {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: 475px) {
+  .home_section {
+    .scrollBar {
+      padding-top: 6rem;
+    }
+    width: 100%;
+    .title_and_search {
+      .title {
+        font-size: 2rem;
+      }
+    }
+  }
+}
