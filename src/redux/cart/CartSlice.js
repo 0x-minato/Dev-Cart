@@ -3,24 +3,23 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   cartArray: [],
   totalPrice: 0,
+  check:0,
 };
-
-let check=0;
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
     cartReducer: (state, action) => (
-      check = 0;
+      state.check = 0;
       state.cartArray.map((product) => 
         if (product.productId === action.payload.productId) {
           product.productTotal += action.payload.productTotal;
           product.productRepeat += action.payload.productRepeat;
-          check = 1;
+          state.check = 1;
         }
       ));
-      if (check == 0) {
+      if (state.check == 0) {
         state.cartArray = [...state.cartArray, action.payload];
       }
     },
