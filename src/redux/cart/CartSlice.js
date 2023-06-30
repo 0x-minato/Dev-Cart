@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   cartArray: [],
   totalPrice: 0,
-  check:0,
+  check:false,
 };
 
 const cartSlice = createSlice({
@@ -11,15 +11,15 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     cartReducer: (state, action) => (
-      state.check = 0;
+      state.check = false;
       state.cartArray.map((product) => 
         if (product.productId === action.payload.productId) {
           product.productTotal += action.payload.productTotal;
           product.productRepeat += action.payload.productRepeat;
-          state.check = 1;
+          state.check = true;
         }
       ));
-      if (state.check == 0) {
+      if (state.check == false) {
         state.cartArray = [...state.cartArray, action.payload];
       }
     },
