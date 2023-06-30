@@ -5,12 +5,14 @@ const initialState = {
   totalPrice: 0,
 };
 
+let check=0;
+
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
     cartReducer: (state, action) => (
-      var check = 0;
+      check = 0;
       state.cartArray.map((product) => 
         if (product.productId === action.payload.productId) {
           product.productTotal += action.payload.productTotal;
