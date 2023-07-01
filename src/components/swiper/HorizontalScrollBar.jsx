@@ -6,7 +6,6 @@ import MouseImage from "../../assets/mouse.jpg";
 import LaptopImage from "../../assets/laptop.jpg";
 import MousePadImage from "../../assets/mouse-pad.jpg";
 import HeadphonesImage from "../../assets/headphones.jpg";
-import CoolingPadImage from "../../assets/cooling-pad.jpg";
 import "swiper/scss";
 import "swiper/scss/effect-fade";
 import "swiper/scss/navigation";
