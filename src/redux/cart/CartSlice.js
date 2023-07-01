@@ -42,6 +42,7 @@ const cartSlice = createSlice({
       },
     cartTotalReducer: (state, action) => {
       state.totalPrice = action.payload;
+    },
   },
 });
 
