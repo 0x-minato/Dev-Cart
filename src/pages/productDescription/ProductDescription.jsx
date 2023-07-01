@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, EffectFade, Autoplay } from "swiper";
 import { useDispatch } from "react-redux";
-import { cartReducer, cartTotalReducer } from "../../redux/cart/CartSlice";
+import { cartReducer } from "../../redux/cart/CartSlice";
 import Loader from "../../components/loader/Loader";
 
 const ProductDescription = () => {
@@ -22,7 +22,7 @@ const ProductDescription = () => {
       setProductData(data.product);
     };
     fetchProductInfo();
-  }, []);
+  }, [productId]);
 
   useEffect(() => {
     setSubtotal(productData.price * numberOfItems);
@@ -32,7 +32,7 @@ const ProductDescription = () => {
     setNumberOfItems((prev) => prev + 1);
   };
   const decrementItems = () => {
-    if (numberOfItems == 1) {
+    if (numberOfItems === 1) {
       return;
     }
     setNumberOfItems((prev) => prev - 1);
@@ -51,7 +51,7 @@ const ProductDescription = () => {
   };
   return (
     <Fragment>
-      {productData.length == 0 ? (
+      {productData.length === 0 ? (
         <Loader />
       ) : (
         <section className={styles.product_description}>
@@ -70,7 +70,7 @@ const ProductDescription = () => {
               modules={[EffectFade, Navigation, Pagination, Autoplay]}
               className={styles.swiper}
             >
-              {productData.images != undefined &&
+              {productData.images !== undefined &&
                 productData.images.map((item, index) => (
                   <SwiperSlide className={styles.swiperSlide} key={index}>
                     <img src={item.pic} alt="" />
@@ -86,7 +86,7 @@ const ProductDescription = () => {
               </p>
               <p className={styles.featured_stock}>
                 (
-                {productData.stock == 0 || numberOfItems > productData.stock
+                {productData.stock === 0 || numberOfItems > productData.stock
                   ? "out of stock"
                   : "in stock"}
                 )
