@@ -18,7 +18,7 @@ const Cart = () => {
       cartArray.map((product, index) => {
         setTotalItems(index + 1);
         setTotalPrice((prev) => prev + product.productTotal);
-        return;
+        return true;
       });
     } else {
       setTotalItems(0);
