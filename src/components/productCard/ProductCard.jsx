@@ -15,16 +15,16 @@ const ProductCard = ({ product }) => {
   const [subtotal, setSubtotal] = useState(product.productTotal);
   useEffect(() => {
     dispatch(productTotalReducer([product.productId, subtotal]));
-  }, [subtotal]);
+  }, [subtotal,dispatch,product.productId]);
   useEffect(() => {
     setSubtotal(numberOfItems * product.productPrice);
-  }, [numberOfItems]);
+  }, [numberOfItems,dispatch,product.productPrice]);
   const incrementItems = () => {
     setNumberOfItems((prev) => prev + 1);
     dispatch(productCardReducer([product.productId, 1]));
   };
   const decrementItems = () => {
-    if (numberOfItems == 1) {
+    if (numberOfItems === 1) {
       return;
     }
     setNumberOfItems((prev) => prev - 1);
