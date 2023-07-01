@@ -18,6 +18,7 @@ const cartSlice = createSlice({
           product.productRepeat += action.payload.productRepeat;
           state.check = !action.payload.productCheck;
         }
+        return true;
       });
       if (state.check === false) {
         state.cartArray = [...state.cartArray, action.payload];
@@ -28,6 +29,7 @@ const cartSlice = createSlice({
         if (product.productId === action.payload[0]) {
           product.productRepeat += action.payload[1];
         }
+        return true;
       });
     },
     productTotalReducer: (state, action) => {
@@ -35,6 +37,7 @@ const cartSlice = createSlice({
         if (product.productId === action.payload[0]) {
           product.productTotal = action.payload[1];
         }
+        return true;
       });
     },
     productDelete: (state, action) => {
