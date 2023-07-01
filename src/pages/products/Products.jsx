@@ -13,7 +13,7 @@ const Products = () => {
   useEffect(() => {
     const fetchKeywordData = async () => {
       const response = await fetch(
-        keyword == ""
+        keyword === ""
           ? "https://products.cyclic.app/api/v1/product/all"
           : `https://products.cyclic.app/api/v1/product/all?type=${keyword}`
       );
@@ -36,7 +36,7 @@ const Products = () => {
   }, [searchTerm]);
   return (
     <Fragment>
-      {products.length == 0 ? (
+      {products.length === 0 ? (
         <Loader />
       ) : (
         <section className={styles.products_section}>
@@ -79,7 +79,7 @@ const Products = () => {
                     <Fragment key={index}>
                       <img
                         src={image.pic}
-                        alt="image.pic"
+                        alt="productImage"
                         className={styles.products_image}
                       />
                     </Fragment>
@@ -87,7 +87,7 @@ const Products = () => {
                   <h1>{item.name}</h1>
                   <p>₹{item.price}</p>
                   <p className={styles.products_stock}>
-                    ({item.stock == 0 ? "out of stock" : "in stock"})
+                    ({item.stock === 0 ? "out of stock" : "in stock"})
                   </p>
                 </Link>
               ) : null
