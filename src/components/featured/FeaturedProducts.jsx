@@ -17,7 +17,7 @@ const FeaturedProducts = () => {
 
   return (
     <Fragment>
-      {featured.length == 0 ? (
+      {featured.length === 0 ? (
         <Loader />
       ) : (
         <section className={styles.featured_section}>
@@ -32,7 +32,7 @@ const FeaturedProducts = () => {
                     <Fragment key={index}>
                       <img
                         src={image.pic}
-                        alt="image.pic"
+                        alt="productImage"
                         className={styles.featured_image}
                       />
                     </Fragment>
@@ -40,7 +40,7 @@ const FeaturedProducts = () => {
                   <h1>{item.name}</h1>
                   <p>₹{item.price}</p>
                   <p className={styles.featured_stock}>
-                    ({item.stock == 0 ? "out of stock" : "in stock"})
+                    ({item.stock === 0 ? "out of stock" : "in stock"})
                   </p>
                 </div>
               </Fragment>
