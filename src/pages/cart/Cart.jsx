@@ -18,6 +18,7 @@ const Cart = () => {
       cartArray.map((product, index) => {
         setTotalItems(index + 1);
         setTotalPrice((prev) => prev + product.productTotal);
+        return;
       });
     } else {
       setTotalItems(0);
@@ -27,11 +28,11 @@ const Cart = () => {
 
   useEffect(() => {
     dispatch(cartTotalReducer(totalPrice));
-  }, [totalPrice]);
+  }, [totalPrice,dispatch]);
 
   return (
     <section className={styles.cart_section}>
-      {totalItems == 0 ? (
+      {totalItems === 0 ? (
         <div className={styles.empty_cart}>
           <div className={styles.cart_header}>
             <h1>Your Cart is Empty</h1>
