@@ -47,6 +47,7 @@ const ProductDescription = () => {
     productId: productData._id,
     productTotal: subtotal,
     productRepeat: numberOfItems,
+    productCheck:false
   };
   return (
     <Fragment>
