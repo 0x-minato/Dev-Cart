@@ -19,7 +19,7 @@ const cartSlice = createSlice({
           state.check = !action.payload.productCheck;
         }
       });
-      if (state.check == false) {
+      if (state.check === false) {
         state.cartArray = [...state.cartArray, action.payload];
       }
     },
