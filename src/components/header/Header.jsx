@@ -1,31 +1,38 @@
 import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DevImg from "../../assets/devimg.png";
 import { useLocation } from "react-router-dom";
 import { BsListNested } from "react-icons/bs";
 import { ImHome3 } from "react-icons/im";
 import { IoCart } from "react-icons/io5";
-import { IoBookSharp } from "react-icons/io5";
 import { HiShoppingBag } from "react-icons/hi";
 import { useSelector } from "react-redux";
+import { Web3Button } from "@web3modal/react";
 import Sidebar from "../sidebar/Sidebar.jsx";
+import { useAccount } from "wagmi";
 
 const Header = () => {
   const cartArray = useSelector((state) => state.cart.cartArray);
   const [sidebar, setSidebar] = useState(false);
   const [totalCartItems, setTotalCartItems] = useState(cartArray.length);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+
   useEffect(() => {
     setTotalCartItems(cartArray.length);
   }, [cartArray.length]);
+
+  const disconnect = useAccount({
+    onDisconnect() {
+      console.log("disconnected");
+      navigate("/login");
+      window.location.reload();
+    },
+  });
+
   const links = [
     { title: "HOME", path: "/", image: <ImHome3 /> },
-    {
-      title: "ABOUT",
-      path: "/about",
-      image: <IoBookSharp />,
-    },
     {
       title: "CART",
       path: "/cart",
@@ -45,6 +52,9 @@ const Header = () => {
       path: "/products",
       image: <HiShoppingBag />,
     },
+    {
+      title: "CONNECT",
+    },
   ];
   const showSidebar = () => {
     setSidebar(!sidebar);
@@ -60,20 +70,24 @@ const Header = () => {
             </div>
           </Link>
           <div className={styles.links_container}>
-            {links.map((link, idx) => (
-              <Link
-                to={link.path}
-                key={idx}
-                title={`go to ${link.title}`}
-                className={`${styles.links} ${
-                  link.path === pathname ? styles.active : ""
-                }`}
-              >
-                {link.title}
-                <div className={styles.link_image}>{link.image}</div>
-                {link.update}
-              </Link>
-            ))}
+            {links.map((link, idx) =>
+              link.title == "CONNECT" ? (
+                <Web3Button />
+              ) : (
+                <Link
+                  to={link.path}
+                  key={idx}
+                  title={`go to ${link.title}`}
+                  className={`${styles.links} ${
+                    link.path === pathname ? styles.active : ""
+                  }`}
+                >
+                  {link.title}
+                  <div className={styles.link_image}>{link.image}</div>
+                  {link.update}
+                </Link>
+              )
+            )}
           </div>
         </div>
         <div className={styles.mobileLogo}>

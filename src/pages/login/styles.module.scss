@@ -1,0 +1,108 @@
+@import "../../styles/colors";
+@import "../../styles/mixins";
+
+.login_section {
+  font-family: "Caveat", cursive;
+  font-family: "Dancing Script", cursive;
+  font-family: "Fasthand", cursive;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  .gif {
+    display: none;
+  }
+  .login_box {
+    background-color: $navBackgroundColor;
+    width: 30rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    border-radius: 0 1rem 1rem 0;
+    .devcart {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      > h1 {
+        margin: 0;
+        color: $linkColor;
+        font-size: 4rem;
+      }
+      > p {
+        color: $linkColor;
+        margin-bottom: 0;
+        padding-left: 1.5rem;
+      }
+    }
+    .header {
+      @include flexBox;
+      gap: 1rem;
+      > h1 {
+        font-size: 2rem;
+        color: $linkColor;
+        margin: 0;
+      }
+      > img {
+        width: 2rem;
+      }
+    }
+  }
+}
+.login_section:before {
+  content: "";
+  position: absolute;
+  background-image: url("../../assets/bg2.jpg");
+  background-size: cover;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+@media screen and (max-width: "426px") {
+  .login_section {
+    flex-direction: column;
+    background-color: $navBackgroundColor;
+    justify-content: center;
+    align-items: center;
+    .gif {
+      display: block !important;
+      > img {
+        width: 20rem;
+      }
+    }
+    .login_box {
+      height: 20rem !important;
+      border-radius: 0;
+      width: 100% !important;
+    }
+  }
+}
+
+@media screen and (max-width: "872px") {
+  .login_section {
+    .gif {
+      display: none;
+    }
+    .login_box {
+      width: 24rem;
+      .header {
+        > h1 {
+          font-size: 1rem;
+        }
+      }
+      .devcart {
+        h1 {
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+}
