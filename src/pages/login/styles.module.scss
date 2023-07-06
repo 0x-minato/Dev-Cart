@@ -36,7 +36,6 @@
       > p {
         color: $linkColor;
         margin-bottom: 0;
-        padding-left: 1.5rem;
       }
     }
     .header {
@@ -76,6 +75,14 @@
       height: 20rem !important;
       border-radius: 0;
       width: 100% !important;
+    }
+    .devcart {
+      > p {
+        padding: 0 0 0 1rem;
+        margin: auto;
+        margin-top: 1rem;
+        width: 80%;
+      }
     }
   }
 }
