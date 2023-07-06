@@ -8,6 +8,7 @@ import { IoCart } from "react-icons/io5";
 import { IoBookSharp } from "react-icons/io5";
 import { HiShoppingBag } from "react-icons/hi";
 import { useSelector } from "react-redux";
+import { Web3Button } from "@web3modal/react";
 
 const Sidebar = ({ sidebar, setSidebar }) => {
   const cartArray = useSelector((state) => state.cart.cartArray);
@@ -18,11 +19,6 @@ const Sidebar = ({ sidebar, setSidebar }) => {
   }, [cartArray.length]);
   const links = [
     { title: "HOME", path: "/", image: <ImHome3 /> },
-    {
-      title: "ABOUT",
-      path: "/about",
-      image: <IoBookSharp />,
-    },
     {
       title: "CART",
       path: "/cart",
@@ -42,6 +38,9 @@ const Sidebar = ({ sidebar, setSidebar }) => {
       path: "/products",
       image: <HiShoppingBag />,
     },
+    {
+      title: "CONNECT",
+    },
   ];
   return (
     <aside className={styles.sidebar_section}>
@@ -49,21 +48,25 @@ const Sidebar = ({ sidebar, setSidebar }) => {
         <RxCross2 onClick={() => setSidebar(!sidebar)} />
       </div>
       <div className={styles.sidebar_links}>
-        {links.map((link, idx) => (
-          <Link
-            onClick={() => setSidebar(!sidebar)}
-            to={link.path}
-            key={idx}
-            title={`go to ${link.title}`}
-            className={`${styles.links} ${
-              link.path === pathname ? styles.active : ""
-            }`}
-          >
-            {link.title}
-            <div className={styles.link_image}>{link.image}</div>
-            {link.update}
-          </Link>
-        ))}
+        {links.map((link, idx) =>
+          link.title == "CONNECT" ? (
+            <Web3Button />
+          ) : (
+            <Link
+              onClick={() => setSidebar(!sidebar)}
+              to={link.path}
+              key={idx}
+              title={`go to ${link.title}`}
+              className={`${styles.links} ${
+                link.path === pathname ? styles.active : ""
+              }`}
+            >
+              {link.title}
+              <div className={styles.link_image}>{link.image}</div>
+              {link.update}
+            </Link>
+          )
+        )}
       </div>
     </aside>
   );

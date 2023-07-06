@@ -2,17 +2,12 @@
 @import "../../styles/mixins";
 
 .login_section {
-  font-family: "Caveat", cursive;
-  font-family: "Dancing Script", cursive;
-  font-family: "Fasthand", cursive;
   position: relative;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: start;
-  .gif {
-    display: none;
-  }
+
   .login_box {
     background-color: $navBackgroundColor;
     width: 30rem;
@@ -23,6 +18,11 @@
     justify-content: center;
     gap: 2rem;
     border-radius: 0 1rem 1rem 0;
+    .gif {
+      > img {
+        width: 20rem;
+      }
+    }
     .devcart {
       display: flex;
       flex-direction: column;
@@ -72,12 +72,6 @@
     background-color: $navBackgroundColor;
     justify-content: center;
     align-items: center;
-    .gif {
-      display: block !important;
-      > img {
-        width: 20rem;
-      }
-    }
     .login_box {
       height: 20rem !important;
       border-radius: 0;
@@ -88,9 +82,6 @@
 
 @media screen and (max-width: "872px") {
   .login_section {
-    .gif {
-      display: none;
-    }
     .login_box {
       width: 24rem;
       .header {

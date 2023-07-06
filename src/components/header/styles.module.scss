@@ -98,7 +98,7 @@
   }
 }
 
-@media screen and (max-width: 655px) {
+@media screen and (max-width: 704px) {
   .header {
     @include flexBox(space-between);
     width: 100%;
@@ -120,6 +120,9 @@
     left: 45%;
   }
   .links_container {
+    .connect_button {
+      display: none !important;
+    }
     display: none;
   }
   .mobileLogo {

@@ -16,10 +16,10 @@ const Login = () => {
   });
   return (
     <section className={styles.login_section}>
-      <div className={styles.gif}>
-        <img src={Gif} alt="" />
-      </div>
       <div className={styles.login_box}>
+        <div className={styles.gif}>
+          <img src={Gif} alt="" />
+        </div>
         <div className={styles.devcart}>
           <h1>DevCart</h1>
           <p>bad keyboard....give us money....get keyboard</p>
