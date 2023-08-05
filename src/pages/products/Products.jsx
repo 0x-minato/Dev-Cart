@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { Link, useLocation } from "react-router-dom";
 import Loader from "../../components/loader/Loader";
+import ethereum from "../../assets/ethereum.png";
 
 const Products = () => {
   const [keyword, setKeyword] = useState("");
@@ -14,8 +15,8 @@ const Products = () => {
     const fetchKeywordData = async () => {
       const response = await fetch(
         keyword === ""
-          ? "https://products.cyclic.app/api/v1/product/all"
-          : `https://products.cyclic.app/api/v1/product/all?type=${keyword}`
+          ? "https://allproducts.cyclic.app/api/v1/product/all"
+          : `https://allproducts.cyclic.app/api/v1/product/all?type=${keyword}`
       );
       const data = await response.json();
       setProducts(data.products);
@@ -26,8 +27,8 @@ const Products = () => {
     const fetchKeywordData = async () => {
       const response = await fetch(
         searchTerm == null
-          ? "https://products.cyclic.app/api/v1/product/all"
-          : `https://products.cyclic.app/api/v1/product/all?type=${searchTerm}`
+          ? "https://allproducts.cyclic.app/api/v1/product/all"
+          : `https://allproducts.cyclic.app/api/v1/product/all?type=${searchTerm}`
       );
       const data = await response.json();
       setProducts(data.products);
@@ -85,7 +86,10 @@ const Products = () => {
                     </Fragment>
                   ))}
                   <h1>{item.name}</h1>
-                  <p>₹{item.price}</p>
+                  <p className={styles.price_section}>
+                    <img src={ethereum} />
+                    {item.price}
+                  </p>
                   <p className={styles.products_stock}>
                     ({item.stock === 0 ? "out of stock" : "in stock"})
                   </p>

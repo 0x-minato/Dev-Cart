@@ -40,6 +40,13 @@
         color: green;
       }
     }
+    .product_price {
+      display: flex;
+      gap: 0.3rem;
+      > img {
+        width: 2.5rem;
+      }
+    }
     .cart_section {
       > button {
         background-color: $navBackgroundColor;
@@ -150,7 +157,7 @@
         font-size: 2rem !important;
       }
       > p {
-        font-size: 1.3rem !important;
+        font-size: 1.7rem !important;
       }
     }
     .cart_section {

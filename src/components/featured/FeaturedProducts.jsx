@@ -1,5 +1,6 @@
 import React, { useEffect, useState, Fragment } from "react";
 import Loader from "../../components/loader/Loader";
+import ethereum from "../../assets/ethereum.png";
 import styles from "./styles.module.scss";
 
 const FeaturedProducts = () => {
@@ -7,7 +8,7 @@ const FeaturedProducts = () => {
   useEffect(() => {
     const fetchFeaturedData = async () => {
       const response = await fetch(
-        `https://products.cyclic.app/api/v1/product/all`
+        `https://allproducts.cyclic.app/api/v1/product/all`
       );
       const featuredAPIdata = await response.json();
       setFeatured(featuredAPIdata.products.slice(0, 6));
@@ -38,7 +39,10 @@ const FeaturedProducts = () => {
                     </Fragment>
                   ))}
                   <h1>{item.name}</h1>
-                  <p>₹{item.price}</p>
+                  <p className={styles.featured_price}>
+                    <img src={ethereum} />
+                    {item.price}
+                  </p>
                   <p className={styles.featured_stock}>
                     ({item.stock === 0 ? "out of stock" : "in stock"})
                   </p>

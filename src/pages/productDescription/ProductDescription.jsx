@@ -6,6 +6,7 @@ import { Pagination, Navigation, EffectFade, Autoplay } from "swiper";
 import { useDispatch } from "react-redux";
 import { cartReducer } from "../../redux/cart/CartSlice";
 import Loader from "../../components/loader/Loader";
+import ethereum from "../../assets/ethereum.png";
 
 const ProductDescription = () => {
   const [productData, setProductData] = useState([]);
@@ -16,7 +17,7 @@ const ProductDescription = () => {
   useEffect(() => {
     const fetchProductInfo = async () => {
       const response = await fetch(
-        `https://products.cyclic.app/api/v1/product/${productId}`
+        `https://allproducts.cyclic.app/api/v1/product/${productId}`
       );
       const data = await response.json();
       setProductData(data.product);
@@ -47,7 +48,7 @@ const ProductDescription = () => {
     productId: productData._id,
     productTotal: subtotal,
     productRepeat: numberOfItems,
-    productCheck:false
+    productCheck: false,
   };
   return (
     <Fragment>
@@ -82,7 +83,8 @@ const ProductDescription = () => {
             <div className={styles.header_section}>
               <h1>{productData.name}</h1>
               <p className={styles.product_price}>
-                Price : ₹{productData.price}
+                <img src={ethereum} />
+                {productData.price}
               </p>
               <p className={styles.featured_stock}>
                 (
