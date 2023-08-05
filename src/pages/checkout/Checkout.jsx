@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import styles from "./styles.module.scss";
+import ethereum from "../../assets/ethereum.png";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
@@ -10,7 +11,10 @@ const Checkout = () => {
       {totalPrice > 0 ? (
         <Fragment>
           <h1>Thank you for your order</h1>
-          <p>Total : ₹{totalPrice}</p>
+          <p>
+            Total : <img src={ethereum} alt="" />
+            {totalPrice}
+          </p>
         </Fragment>
       ) : (
         <Navigate to="/cart" />

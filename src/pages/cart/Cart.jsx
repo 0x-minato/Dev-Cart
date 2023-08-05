@@ -6,6 +6,7 @@ import ProductCard from "../../components/productCard/ProductCard";
 import { Link } from "react-router-dom";
 import emptyCart from "../../assets/emptyCart.png";
 import { cartTotalReducer } from "../../redux/cart/CartSlice";
+import ethereum from "../../assets/ethereum.png";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const Cart = () => {
 
   useEffect(() => {
     dispatch(cartTotalReducer(totalPrice));
-  }, [totalPrice,dispatch]);
+  }, [totalPrice, dispatch]);
 
   return (
     <section className={styles.cart_section}>
@@ -53,7 +54,10 @@ const Cart = () => {
           <div className={styles.cart_subtotal}>
             <h2>Subtotal</h2>
             <p>Total Items : {totalItems}</p>
-            <p>Total Price : ₹{totalPrice}</p>
+            <p className={styles.cart_price}>
+              Total Price : <img src={ethereum} alt="" />
+              {totalPrice}
+            </p>
             <Link to="/checkout">Proceed to Buy</Link>
           </div>
         </Fragment>

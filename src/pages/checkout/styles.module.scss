@@ -18,6 +18,14 @@
     color: $linkColor;
     margin: 0;
   }
+  > p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    > img {
+      width: 8rem;
+    }
+  }
 }
 @media screen and (max-width: "770px") {
   .checkout {
@@ -26,6 +34,9 @@
     }
     > p {
       font-size: 4rem;
+      > img {
+        width: 5rem;
+      }
     }
   }
 }
@@ -36,6 +47,9 @@
     }
     > p {
       font-size: 3rem;
+      > img {
+        width: 3.5rem;
+      }
     }
   }
 }

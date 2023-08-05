@@ -7,6 +7,7 @@ import {
   productDelete,
   productTotalReducer,
 } from "../../redux/cart/CartSlice";
+import ethereum from "../../assets/ethereum.png";
 
 const ProductCard = ({ product }) => {
   const cartArray = useSelector((state) => state.cart.cartArray);
@@ -15,10 +16,10 @@ const ProductCard = ({ product }) => {
   const [subtotal, setSubtotal] = useState(product.productTotal);
   useEffect(() => {
     dispatch(productTotalReducer([product.productId, subtotal]));
-  }, [subtotal,dispatch,product.productId]);
+  }, [subtotal, dispatch, product.productId]);
   useEffect(() => {
     setSubtotal(numberOfItems * product.productPrice);
-  }, [numberOfItems,dispatch,product.productPrice]);
+  }, [numberOfItems, dispatch, product.productPrice]);
   const incrementItems = () => {
     setNumberOfItems((prev) => prev + 1);
     dispatch(productCardReducer([product.productId, 1]));
@@ -42,7 +43,10 @@ const ProductCard = ({ product }) => {
           className={styles.product_image}
         />
         <h2>{product.productName}</h2>
-        <p>₹{product.productPrice}</p>
+        <p className={styles.product_price}>
+          <img src={ethereum} alt="" />
+          {product.productPrice}
+        </p>
         <div className={styles.cart_section}>
           <button onClick={decrementItems} className={styles.cart_button}>
             -
@@ -63,7 +67,8 @@ const ProductCard = ({ product }) => {
       </div>
       <div className={styles.border_line}></div>
       <p className={styles.subtotal}>
-        Subtotal ({numberOfItems} items) : ₹{subtotal}
+        Subtotal ({numberOfItems} items) : <img src={ethereum} />
+        {subtotal}
       </p>
     </section>
   );
