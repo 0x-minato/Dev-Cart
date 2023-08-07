@@ -15,7 +15,7 @@ const Cart = () => {
   const [totalItems, setTotalItems] = useState(0);
   useEffect(() => {
     setTotalPrice(0);
-    if (cartArray.length > 0) {
+    if (cartArray == null ? 0 : cartArray.length > 0) {
       cartArray.map((product, index) => {
         setTotalItems(index + 1);
         setTotalPrice((prev) => prev + product.productTotal);

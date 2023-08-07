@@ -15,13 +15,15 @@ import { useAccount } from "wagmi";
 const Header = () => {
   const cartArray = useSelector((state) => state.cart.cartArray);
   const [sidebar, setSidebar] = useState(false);
-  const [totalCartItems, setTotalCartItems] = useState(cartArray.length);
+  const [totalCartItems, setTotalCartItems] = useState(
+    cartArray == null ? 0 : cartArray.length
+  );
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
-    setTotalCartItems(cartArray.length);
-  }, [cartArray.length]);
+    setTotalCartItems(cartArray == null ? 0 : cartArray.length);
+  }, [cartArray == null ? 0 : cartArray.length]);
 
   const disconnect = useAccount({
     onDisconnect() {

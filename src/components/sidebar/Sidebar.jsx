@@ -12,11 +12,13 @@ import { Web3Button } from "@web3modal/react";
 
 const Sidebar = ({ sidebar, setSidebar }) => {
   const cartArray = useSelector((state) => state.cart.cartArray);
-  const [totalCartItems, setTotalCartItems] = useState(cartArray.length);
+  const [totalCartItems, setTotalCartItems] = useState(
+    cartArray == null ? 0 : cartArray.length
+  );
   const { pathname } = useLocation();
   useEffect(() => {
-    setTotalCartItems(cartArray.length);
-  }, [cartArray.length]);
+    setTotalCartItems(cartArray == null ? 0 : cartArray.length);
+  }, [cartArray == null ? 0 : cartArray.length]);
   const links = [
     { title: "HOME", path: "/", image: <ImHome3 /> },
     {

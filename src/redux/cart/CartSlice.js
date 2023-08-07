@@ -1,16 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const cart =
+  localStorage.getItem("cartItems") != null
+    ? JSON.parse(localStorage.getItem("cartItems"))
+    : [];
+
 const initialState = {
-  cartArray: [],
+  cartArray: cart,
   totalPrice: 0,
-  check:false,
+  check: false,
 };
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-   cartReducer: (state, action) => {
+    cartReducer: (state, action) => {
       state.check = action.payload.productCheck;
       state.cartArray.map((product) => {
         if (product.productId === action.payload.productId) {
@@ -23,6 +28,11 @@ const cartSlice = createSlice({
       if (state.check === false) {
         state.cartArray = [...state.cartArray, action.payload];
       }
+
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(state.cartArray.map((item) => item))
+      );
     },
     productCardReducer: (state, action) => {
       state.cartArray.map((product) => {
@@ -31,6 +41,10 @@ const cartSlice = createSlice({
         }
         return true;
       });
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(state.cartArray.map((item) => item))
+      );
     },
     productTotalReducer: (state, action) => {
       state.cartArray.map((product) => {
@@ -42,7 +56,11 @@ const cartSlice = createSlice({
     },
     productDelete: (state, action) => {
       state.cartArray.splice(action.payload, 1);
-      },
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(state.cartArray.map((item) => item))
+      );
+    },
     cartTotalReducer: (state, action) => {
       state.totalPrice = action.payload;
     },
