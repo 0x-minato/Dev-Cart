@@ -12,6 +12,7 @@ const Products = () => {
   const searchTerm = new URLSearchParams(search).get("search");
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     const fetchKeywordData = async () => {
       const response = await fetch(
         keyword === ""
@@ -22,8 +23,10 @@ const Products = () => {
       setProducts(data.products);
     };
     fetchKeywordData();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [keyword]);
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     const fetchKeywordData = async () => {
       const response = await fetch(
         searchTerm == null
@@ -34,6 +37,7 @@ const Products = () => {
       setProducts(data.products);
     };
     fetchKeywordData();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [searchTerm]);
   return (
     <Fragment>

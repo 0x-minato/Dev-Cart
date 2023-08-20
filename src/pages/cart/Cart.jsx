@@ -3,16 +3,24 @@ import styles from "./styles.module.scss";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import ProductCard from "../../components/productCard/ProductCard";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import emptyCart from "../../assets/emptyCart.png";
 import { cartTotalReducer } from "../../redux/cart/CartSlice";
 import ethereum from "../../assets/ethereum.png";
+import { ethers } from "ethers";
 
-const Cart = () => {
+const Cart = ({ provider, account, devcart, setCheckout }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartArray = useSelector((state) => state.cart.cartArray);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
+  let items = [];
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   useEffect(() => {
     setTotalPrice(0);
     if (cartArray == null ? 0 : cartArray.length > 0) {
@@ -25,7 +33,26 @@ const Cart = () => {
       setTotalItems(0);
       setTotalPrice(0);
     }
+    items = cartArray.map((item, idx) => {
+      items.push({
+        name: item.productName,
+        price: item.productPrice,
+        count: item.productRepeat,
+      });
+    });
   }, [cartArray]);
+
+  const buyHandler = async () => {
+    const signer = await provider.getSigner();
+    let transaction = await devcart
+      .connect(signer)
+      .buy(ethers.utils.parseEther(totalPrice.toString()), items, {
+        value: ethers.utils.parseEther(totalPrice.toString()),
+      });
+    await transaction.wait();
+    setCheckout(true);
+    navigate("/checkout");
+  };
 
   useEffect(() => {
     dispatch(cartTotalReducer(totalPrice));
@@ -58,7 +85,7 @@ const Cart = () => {
               Total Price : <img src={ethereum} alt="" />
               {totalPrice}
             </p>
-            <Link to="/checkout">Proceed to Buy</Link>
+            <button onClick={buyHandler}>Proceed to Buy</button>
           </div>
         </Fragment>
       )}

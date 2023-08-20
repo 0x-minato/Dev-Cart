@@ -57,18 +57,14 @@
       color: $linkColor;
       font-size: 2rem;
     }
-    > a {
-      font-weight: bold;
-      display: block;
-      width: 12rem;
-      height: 2.5rem;
-      text-align: center;
-      padding-top: 0.5rem;
-      font-size: 1.2rem;
-      border-radius: 0.3rem;
-      text-decoration: none;
+    > button {
       background-color: $backgroundColor;
       color: $linkColor;
+      width: 12rem;
+      height: 2.5rem;
+      font-size: 1.4rem;
+      border: none;
+      cursor: pointer;
     }
     .cart_price {
       display: flex;

@@ -74,7 +74,7 @@ const Header = () => {
           <div className={styles.links_container}>
             {links.map((link, idx) =>
               link.title == "CONNECT" ? (
-                <div className={styles.connect_button}>
+                <div key={idx} className={styles.connect_button}>
                   <Web3Button />
                 </div>
               ) : (

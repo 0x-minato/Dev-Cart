@@ -2,28 +2,30 @@
 @import "../../styles/mixins";
 
 .checkout {
-  height: 100vh;
+  height: 100%;
   background-color: $backgroundColor;
   @include flexBox(center, center, column);
-  gap: 5rem;
+  gap: 1rem;
   > h1 {
+    padding-top: 6rem;
     text-align: center;
-    font-size: 6rem;
+    font-size: 5rem;
     color: $linkColor;
     margin: 0;
   }
-  p {
+  .eth_total {
     text-align: center;
-    font-size: 6rem;
+    font-size: 4rem;
     color: $linkColor;
     margin: 0;
+    padding-bottom: 4rem;
   }
-  > p {
+  > .eth_total {
     display: flex;
     justify-content: center;
     align-items: center;
     > img {
-      width: 8rem;
+      width: 5rem;
     }
   }
 }
@@ -32,7 +34,7 @@
     > h1 {
       font-size: 4rem;
     }
-    > p {
+    > .eth_total {
       font-size: 4rem;
       > img {
         width: 5rem;
@@ -45,7 +47,7 @@
     > h1 {
       font-size: 3rem;
     }
-    > p {
+    > .eth_total {
       font-size: 3rem;
       > img {
         width: 3.5rem;

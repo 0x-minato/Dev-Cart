@@ -6,12 +6,14 @@ import { useNavigate } from "react-router-dom";
 import { Web3Button } from "@web3modal/react";
 import { useAccount } from "wagmi";
 
-const Login = () => {
+const Login = ({ setAccount }) => {
   const navigate = useNavigate();
   const connect = useAccount({
     onConnect({ address, connecter, isReconnected }) {
       console.log("connected", { address, connecter, isReconnected });
+      setAccount(address);
       navigate("/");
+      window.location.reload();
     },
   });
   return (

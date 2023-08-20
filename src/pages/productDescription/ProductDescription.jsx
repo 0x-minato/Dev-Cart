@@ -23,6 +23,7 @@ const ProductDescription = () => {
       setProductData(data.product);
     };
     fetchProductInfo();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [productId]);
 
   useEffect(() => {

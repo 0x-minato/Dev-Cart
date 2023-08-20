@@ -9,7 +9,7 @@ import {
 } from "../../redux/cart/CartSlice";
 import ethereum from "../../assets/ethereum.png";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, checkout }) => {
   const cartArray = useSelector((state) => state.cart.cartArray);
   const dispatch = useDispatch();
   const [numberOfItems, setNumberOfItems] = useState(product.productRepeat);
@@ -47,7 +47,7 @@ const ProductCard = ({ product }) => {
           <img src={ethereum} alt="" />
           {product.productPrice}
         </p>
-        <div className={styles.cart_section}>
+        <div className={checkout ? styles.display : styles.cart_section}>
           <button onClick={decrementItems} className={styles.cart_button}>
             -
           </button>
@@ -63,7 +63,12 @@ const ProductCard = ({ product }) => {
             +
           </button>
         </div>
-        <button onClick={removeProduct}>Remove from cart</button>
+        <button
+          className={checkout ? styles.display : ""}
+          onClick={removeProduct}
+        >
+          Remove from cart
+        </button>
       </div>
       <div className={styles.border_line}></div>
       <p className={styles.subtotal}>

@@ -52,7 +52,7 @@ const Sidebar = ({ sidebar, setSidebar }) => {
       <div className={styles.sidebar_links}>
         {links.map((link, idx) =>
           link.title == "CONNECT" ? (
-            <Web3Button />
+            <Web3Button key={idx} />
           ) : (
             <Link
               onClick={() => setSidebar(!sidebar)}

@@ -5,8 +5,14 @@ const cart =
     ? JSON.parse(localStorage.getItem("cartItems"))
     : [];
 
+const checkout =
+  localStorage.getItem("checkoutItems") != null
+    ? JSON.parse(localStorage.getItem("checkoutItems"))
+    : [];
+
 const initialState = {
   cartArray: cart,
+  checkoutArray: checkout,
   totalPrice: 0,
   check: false,
 };
@@ -64,6 +70,20 @@ const cartSlice = createSlice({
     cartTotalReducer: (state, action) => {
       state.totalPrice = action.payload;
     },
+    emptyCartReducer: (state, action) => {
+      state.cartArray = action.payload;
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(state.cartArray.map((item) => item))
+      );
+    },
+    checkoutReducer: (state, action) => {
+      state.checkoutArray = action.payload;
+      localStorage.setItem(
+        "checkoutItems",
+        JSON.stringify(state.checkoutArray.map((item) => item))
+      );
+    },
   },
 });
 
@@ -72,4 +92,6 @@ export const { productCardReducer } = cartSlice.actions;
 export const { productTotalReducer } = cartSlice.actions;
 export const { productDelete } = cartSlice.actions;
 export const { cartTotalReducer } = cartSlice.actions;
+export const { emptyCartReducer } = cartSlice.actions;
+export const { checkoutReducer } = cartSlice.actions;
 export default cartSlice.reducer;

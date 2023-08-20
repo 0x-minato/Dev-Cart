@@ -4,6 +4,8 @@ import productCardReducer from "./cart/CartSlice.js";
 import productTotalReducer from "./cart/CartSlice.js";
 import productDelete from "./cart/CartSlice.js";
 import cartTotalReducer from "./cart/CartSlice.js";
+import emptyCartReducer from "./cart/CartSlice.js";
+import checkoutReducer from "./cart/CartSlice.js";
 import loadingReducer from "./loading/loadingSlice";
 
 export const store = configureStore({
@@ -14,5 +16,7 @@ export const store = configureStore({
     productTotalReducer,
     productDelete,
     cartTotalReducer,
+    emptyCartReducer,
+    checkoutReducer,
   },
 });

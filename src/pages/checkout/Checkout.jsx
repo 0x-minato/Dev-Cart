@@ -1,17 +1,39 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import ethereum from "../../assets/ethereum.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
+import { emptyCartReducer } from "../../redux/cart/CartSlice";
+import { checkoutReducer } from "../../redux/cart/CartSlice";
+import ProductCard from "../../components/productCard/ProductCard";
 
-const Checkout = () => {
+const Checkout = ({ checkout }) => {
+  const checkoutArray = useSelector((state) => state.cart.checkoutArray);
   const totalPrice = useSelector((state) => state.cart.totalPrice);
+  const cartArray = useSelector((state) => state.cart.cartArray);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (checkout) {
+      console.log(checkout);
+      dispatch(checkoutReducer(cartArray));
+      console.log(checkoutArray);
+      dispatch(emptyCartReducer([]));
+    }
+  }, []);
+
   return (
     <section className={styles.checkout}>
-      {totalPrice > 0 ? (
+      {checkout ? (
         <Fragment>
           <h1>Thank you for your order</h1>
-          <p>
+          <div className={styles.current_order}>
+            {checkoutArray.map((product, index) => {
+              return (
+                <ProductCard key={index} product={product} checkout={true} />
+              );
+            })}
+          </div>
+          <p className={styles.eth_total}>
             Total : <img src={ethereum} alt="" />
             {totalPrice}
           </p>
