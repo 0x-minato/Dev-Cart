@@ -5,7 +5,7 @@ contract Devcart {
     address public owner;
 
     struct Item {
-        string name;
+        bytes32 name;
         uint256 price;
         uint256 count;
     }
@@ -52,5 +52,17 @@ contract Devcart {
     function withdraw() public onlyOwner {
         (bool success, ) = owner.call{value: address(this).balance}("");
         require(success);
+    }
+
+    function getTotalOrders() public view returns (Item[] memory) {
+        Order storage currentOrder = totalOrders[msg.sender][
+            orderCount[msg.sender]
+        ];
+        Item[] storage currentItems = currentOrder.cart;
+        return currentItems;
+    }
+
+    function getOrderCount() public view returns (uint256) {
+        return orderCount[msg.sender];
     }
 }

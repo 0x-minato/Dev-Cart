@@ -14,9 +14,7 @@ const Checkout = ({ checkout }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (checkout) {
-      console.log(checkout);
       dispatch(checkoutReducer(cartArray));
-      console.log(checkoutArray);
       dispatch(emptyCartReducer([]));
     }
   }, []);
