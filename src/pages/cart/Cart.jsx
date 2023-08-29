@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import Loader from "../../components/loader/Loader";
 import ProductCard from "../../components/productCard/ProductCard";
 import { Link, useNavigate } from "react-router-dom";
 import emptyCart from "../../assets/emptyCart.png";
@@ -9,10 +10,12 @@ import { cartTotalReducer } from "../../redux/cart/CartSlice";
 import ethereum from "../../assets/ethereum.png";
 import { ethers } from "ethers";
 
-const Cart = ({ provider, account, devcart, setCheckout }) => {
+const Cart = ({ provider, devcart, setCheckout }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartArray = useSelector((state) => state.cart.cartArray);
+  const [loading, setLoading] = useState();
+  const [boughtItems, setBoughtItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
   let items = [];
@@ -35,9 +38,11 @@ const Cart = ({ provider, account, devcart, setCheckout }) => {
     }
     items = cartArray.map((item, idx) => {
       items.push({
-        name: item.productName,
-        price: item.productPrice,
-        count: item.productRepeat,
+        name: ethers.utils.keccak256(
+          ethers.utils.toUtf8Bytes(item.productName)
+        ),
+        price: ethers.utils.parseEther(item.productPrice.toString()),
+        count: ethers.BigNumber.from(item.productRepeat),
       });
     });
   }, [cartArray]);
@@ -49,7 +54,9 @@ const Cart = ({ provider, account, devcart, setCheckout }) => {
       .buy(ethers.utils.parseEther(totalPrice.toString()), items, {
         value: ethers.utils.parseEther(totalPrice.toString()),
       });
+    setLoading(true);
     await transaction.wait();
+    setLoading(false);
     setCheckout(true);
     navigate("/checkout");
   };
@@ -68,6 +75,8 @@ const Cart = ({ provider, account, devcart, setCheckout }) => {
             <Link to="/products">Browse Products</Link>
           </div>
         </div>
+      ) : loading ? (
+        <Loader />
       ) : (
         <Fragment>
           <div className={styles.cart_header}>
