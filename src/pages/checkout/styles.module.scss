@@ -24,9 +24,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 2rem;
     > img {
       width: 5rem;
     }
+  }
+  > a {
+    font-weight: bold;
+    display: block;
+    width: 12rem;
+    height: 2.5rem;
+    text-align: center;
+    padding-top: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+    border-radius: 0.3rem;
+    text-decoration: none;
+    background-color: $navBackgroundColor;
+    color: $linkColor;
   }
 }
 @media screen and (max-width: "770px") {

@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import ethereum from "../../assets/ethereum.png";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { emptyCartReducer } from "../../redux/cart/CartSlice";
 import { checkoutReducer } from "../../redux/cart/CartSlice";
 import ProductCard from "../../components/productCard/ProductCard";
@@ -35,6 +35,7 @@ const Checkout = ({ checkout }) => {
             Total : <img src={ethereum} alt="" />
             {totalPrice}
           </p>
+          <Link to="/myorders">My Orders</Link>
         </Fragment>
       ) : (
         <Navigate to="/cart" />

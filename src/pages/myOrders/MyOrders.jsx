@@ -12,7 +12,6 @@ const MyOrders = ({ devcart }) => {
   const [orders, setOrders] = useState([]);
   const [loader, setLoader] = useState(false);
   const accountDetails = useAccount();
-  // const currOrders = [];
   useEffect(() => {
     if (devcart) {
       getOrderData();
@@ -32,7 +31,7 @@ const MyOrders = ({ devcart }) => {
     setOrders(currOrders);
     setLoader(false);
   };
-  console.log(orders);
+
   const getOrderTotal = (order) => {
     let total = 0;
     order.map((item) => {
