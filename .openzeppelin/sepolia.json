@@ -1,0 +1,138 @@
+{
+  "manifestVersion": "3.2",
+  "admin": {
+    "address": "0xc63bE6B7A5eBEb1183c6243693Ad532dd416D50C",
+    "txHash": "0x016dcbb381bb53804c30cbc29c8d597abbd748e4a1ff8cd33046bb1180223831"
+  },
+  "proxies": [
+    {
+      "address": "0x1Cd9820ce57198479DfA3C08eCBD0EaE44d555bf",
+      "txHash": "0xed9ab6b5435105bec757b36d587e6d8ada41d1e5a040e423e57e01f0f2f035a6",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x0d02Aa33a2F2453652116cFb436FaCFeA410c638",
+      "txHash": "0xba18deaf8383adef830cbc25f95d9461ca2a7b93c63131b0ba5ca933fba1b9b2",
+      "kind": "transparent"
+    }
+  ],
+  "impls": {
+    "4a8527ce59af95c5ae0d4fba882abef581933fa2cfbebc861dbecdf2da9401f6": {
+      "address": "0x1C0e40E4B417E43a6a41342c0002bdf1209b24c5",
+      "txHash": "0xcd8798fb513c5406dc7174fa8dfd6f6f00fcbf581565a6be34473c75685ae403",
+      "layout": {
+        "solcVersion": "0.8.17",
+        "storage": [
+          {
+            "label": "owner",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Devcart",
+            "src": "contracts\\Devcart.sol:5"
+          },
+          {
+            "label": "order",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_struct(Order)17_storage)dyn_storage",
+            "contract": "Devcart",
+            "src": "contracts\\Devcart.sol:18"
+          },
+          {
+            "label": "totalOrders",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_struct(Order)17_storage))",
+            "contract": "Devcart",
+            "src": "contracts\\Devcart.sol:20"
+          },
+          {
+            "label": "orderCount",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "Devcart",
+            "src": "contracts\\Devcart.sol:21"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_struct(Item)10_storage)dyn_storage": {
+            "label": "struct Devcart.Item[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_struct(Order)17_storage)dyn_storage": {
+            "label": "struct Devcart.Order[]",
+            "numberOfBytes": "32"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_struct(Order)17_storage))": {
+            "label": "mapping(address => mapping(uint256 => struct Devcart.Order))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Order)17_storage)": {
+            "label": "mapping(uint256 => struct Devcart.Order)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Item)10_storage": {
+            "label": "struct Devcart.Item",
+            "members": [
+              {
+                "label": "name",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "price",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "count",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_struct(Order)17_storage": {
+            "label": "struct Devcart.Order",
+            "members": [
+              {
+                "label": "time",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "cart",
+                "type": "t_array(t_struct(Item)10_storage)dyn_storage",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        }
+      }
+    }
+  }
+}

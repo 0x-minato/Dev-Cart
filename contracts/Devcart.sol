@@ -1,29 +1,20 @@
-//SPDX-Lisence-Identifier:UNLICENSED
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
 contract Devcart {
     address public owner;
 
-    struct Item {
-        bytes32 name;
-        uint256 price;
-        uint256 count;
-    }
-
-    struct Order {
-        uint256 time;
-        Item[] cart;
-    }
-
-    Order[] public order;
-
-    mapping(address => mapping(uint256 => Order)) public totalOrders;
+    mapping(address => string[]) public storageCID;
     mapping(address => uint256) public orderCount;
 
-    event Buy(address buyer, uint orderCount);
+    event Buy(
+        address indexed buyer,
+        uint256 indexed orderCount,
+        uint indexed timestamp
+    ); // Added "indexed" keyword for better event filtering
 
     modifier onlyOwner() {
-        require(msg.sender == owner);
+        require(msg.sender == owner, "Only the owner can call this function");
         _;
     }
 
@@ -31,38 +22,24 @@ contract Devcart {
         owner = msg.sender;
     }
 
-    function buy(
-        uint256 totalPrice,
-        Item[] memory recievedCart
-    ) public payable {
-        require(msg.value >= totalPrice);
+    function buy(string calldata CID) public payable {
+        require(msg.value > 0, "Value cannot be 0");
         orderCount[msg.sender]++;
-
-        Order storage currentOrder = order.push();
-
-        currentOrder.time = block.timestamp;
-        for (uint256 i = 1; i < recievedCart.length; i++) {
-            currentOrder.cart[i] = recievedCart[i];
-        }
-        totalOrders[msg.sender][orderCount[msg.sender]] = currentOrder;
-
-        emit Buy(msg.sender, orderCount[msg.sender]);
+        storageCID[msg.sender].push(CID);
+        emit Buy(msg.sender, orderCount[msg.sender], block.timestamp);
     }
 
     function withdraw() public onlyOwner {
-        (bool success, ) = owner.call{value: address(this).balance}("");
-        require(success);
+        require(address(this).balance > 0, "Contract balance is empty");
+        (bool success, ) = payable(owner).call{value: address(this).balance}(
+            ""
+        );
+        require(success, "Withdrawal failed");
     }
 
-    function getTotalOrders() public view returns (Item[] memory) {
-        Order storage currentOrder = totalOrders[msg.sender][
-            orderCount[msg.sender]
-        ];
-        Item[] storage currentItems = currentOrder.cart;
-        return currentItems;
-    }
-
-    function getOrderCount() public view returns (uint256) {
-        return orderCount[msg.sender];
+    function getCIDs(
+        address userAddress
+    ) public view returns (string[] memory) {
+        return storageCID[userAddress];
     }
 }

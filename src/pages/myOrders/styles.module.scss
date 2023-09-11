@@ -1,0 +1,167 @@
+@import "../../styles/colors";
+@import "../../styles/mixins";
+
+.orders_section {
+  @include flexBox(center, center, column);
+  width: 100%;
+  height: 100%;
+  background-color: $backgroundColor;
+  .empty_order {
+    height: 100vh;
+  }
+  .order_header {
+    @include flexBox(center, center, column);
+    padding: 5rem 0 0 0;
+    > h1 {
+      text-align: center;
+      font-size: 6rem;
+      color: $linkColor;
+      padding-top: 4rem;
+      margin: 0;
+    }
+    > h3 {
+      text-align: start;
+      font-size: 2rem;
+      color: $linkColor;
+      margin-top: 1rem;
+      padding-right: 17rem;
+    }
+    > img {
+      width: 20rem;
+    }
+    a {
+      font-weight: bold;
+      display: block;
+      width: 12rem;
+      height: 2.5rem;
+      text-align: center;
+      padding-top: 0.5rem;
+      margin-top: 5rem;
+      font-size: 1.2rem;
+      border-radius: 0.3rem;
+      text-decoration: none;
+      background-color: $navBackgroundColor;
+      color: $linkColor;
+    }
+  }
+  .total_orders {
+    @include flexBox(center, center, column);
+    .current_order {
+      background-color: $secondaryColor;
+      width: 80rem;
+      margin: 2rem 0 2rem 0;
+      padding: 2rem;
+      border-radius: 1rem;
+      cursor: pointer;
+      .order_details {
+        @include flexBox(space-between, center, row);
+      }
+      .current_header {
+        > h1 {
+          color: $linkColor;
+          font-size: 1.5rem;
+        }
+      }
+      .items {
+        > h3 {
+          color: $linkColor;
+        }
+      }
+      .order_total {
+        > p {
+          display: flex;
+          align-items: center;
+          color: $linkColor;
+          font-size: 1.2rem;
+          > img {
+            width: 2.3rem;
+          }
+        }
+      }
+      .order_date {
+        h3 {
+          color: $linkColor;
+        }
+      }
+    }
+    .border_line {
+      width: 75rem;
+      height: 1px;
+      margin-top: 1rem;
+      background-color: grey;
+      text-align: center;
+    }
+  }
+}
+@media screen and (max-width: "1316px") {
+  .orders_section {
+    .current_order {
+      width: 40rem !important;
+      .border_line {
+        width: 36rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: "940px") {
+  .orders_section {
+    .total_orders {
+      .card_section {
+        width: 30rem !important;
+        .border_line {
+          width: 45rem;
+        }
+      }
+    }
+    .empty_order {
+      height: 100%;
+    }
+  }
+}
+@media screen and (max-width: "750px") {
+  .orders_section {
+    .order_header {
+      > h1 {
+        font-size: 4rem;
+      }
+      > h3 {
+        padding-right: 7rem;
+      }
+    }
+    .current_order {
+      width: 18rem !important;
+      .order_details {
+        display: block !important;
+      }
+      .border_line {
+        width: 14rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: "425px") {
+  .orders_section {
+    .current_order {
+      width: 15rem;
+      .order_details {
+        display: block !important;
+      }
+      .border_line {
+        width: 14rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: "320px") {
+  .orders_section {
+    .order_header {
+      > h3 {
+        font-size: 2rem;
+        padding-right: 0;
+      }
+      > h1 {
+        font-size: 3rem;
+      }
+    }
+  }
+}

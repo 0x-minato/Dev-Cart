@@ -1,5 +1,4 @@
 require("@nomicfoundation/hardhat-toolbox");
-require("@openzeppelin/hardhat-upgrades");
 const ALCHEMY_API_KEY = "WYFcGNcnv3MtA3dm5YCmVtHBnxGjxfX2";
 const SEPOLIA_PRIVATE_KEY =
   "40aef9725745c5d4b1b06f6aaae8aba7cdd20a3b4cb2541e063a9aa7622b5f5d";

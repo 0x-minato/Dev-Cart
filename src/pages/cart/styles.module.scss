@@ -22,19 +22,23 @@
     > img {
       width: 20rem;
     }
-    a {
-      font-weight: bold;
-      display: block;
-      width: 12rem;
-      height: 2.5rem;
-      text-align: center;
-      padding-top: 0.5rem;
-      margin-top: 5rem;
-      font-size: 1.2rem;
-      border-radius: 0.3rem;
-      text-decoration: none;
-      background-color: $navBackgroundColor;
-      color: $linkColor;
+    .button_section {
+      @include flexBox(center, center, row);
+      gap: 5rem;
+      a {
+        font-weight: bold;
+        display: block;
+        width: 12rem;
+        height: 2.5rem;
+        text-align: center;
+        padding-top: 0.5rem;
+        margin-top: 5rem;
+        font-size: 1.2rem;
+        border-radius: 0.3rem;
+        text-decoration: none;
+        background-color: $navBackgroundColor;
+        color: $linkColor;
+      }
     }
   }
   .cart_products {
@@ -92,6 +96,14 @@
         margin: auto;
       }
     }
+    .empty_cart {
+      height: 100%;
+    }
+    .cart_header {
+      > a {
+        margin-top: 1rem;
+      }
+    }
   }
 }
 @media screen and (max-width: "750px") {
@@ -113,6 +125,17 @@
     }
   }
 }
+
+@media screen and (max-width: "750px") {
+  .button_section {
+    flex-direction: column !important;
+    gap: 0 !important;
+    > a {
+      margin-top: 3rem !important;
+    }
+  }
+}
+
 @media screen and (max-width: "425px") {
   .cart_section {
     .cart_subtotal {

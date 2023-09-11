@@ -11,7 +11,7 @@ async function main() {
   const devcart = await Devcart.deploy();
   await devcart.deployed();
 
-  console.log(`deployed address'${devcart.address}\n`);
+  console.log(`deployed address :${devcart.address}\n`);
 }
 
 main().catch((error) => {

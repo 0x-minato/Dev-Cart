@@ -8,15 +8,21 @@
     "anonymous": false,
     "inputs": [
       {
-        "indexed": false,
+        "indexed": true,
         "internalType": "address",
         "name": "buyer",
         "type": "address"
       },
       {
-        "indexed": false,
+        "indexed": true,
         "internalType": "uint256",
         "name": "orderCount",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "timestamp",
         "type": "uint256"
       }
     ],
@@ -26,31 +32,9 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "totalPrice",
-        "type": "uint256"
-      },
-      {
-        "components": [
-          {
-            "internalType": "string",
-            "name": "name",
-            "type": "string"
-          },
-          {
-            "internalType": "uint256",
-            "name": "price",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "count",
-            "type": "uint256"
-          }
-        ],
-        "internalType": "struct Devcart.Item[]",
-        "name": "recievedCart",
-        "type": "tuple[]"
+        "internalType": "string",
+        "name": "CID",
+        "type": "string"
       }
     ],
     "name": "buy",
@@ -61,17 +45,17 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
+        "internalType": "address",
+        "name": "userAddress",
+        "type": "address"
       }
     ],
-    "name": "order",
+    "name": "getCIDs",
     "outputs": [
       {
-        "internalType": "uint256",
-        "name": "time",
-        "type": "uint256"
+        "internalType": "string[]",
+        "name": "",
+        "type": "string[]"
       }
     ],
     "stateMutability": "view",
@@ -122,12 +106,12 @@
         "type": "uint256"
       }
     ],
-    "name": "totalOrders",
+    "name": "storageCID",
     "outputs": [
       {
-        "internalType": "uint256",
-        "name": "time",
-        "type": "uint256"
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       }
     ],
     "stateMutability": "view",

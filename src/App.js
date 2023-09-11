@@ -51,7 +51,7 @@ function App() {
     setProvider(provider);
 
     const devcart = new ethers.Contract(
-      "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+      "0xDc390f40f242ca97e8cA4a76CB40B56AEF3DB7b3",
       Devcart,
       provider
     );

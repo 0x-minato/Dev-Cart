@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./styles.module.scss";
 import Search from "../../components/search/Search.jsx";
 import HorizontalScrollBar from "../../components/swiper/HorizontalScrollBar";
