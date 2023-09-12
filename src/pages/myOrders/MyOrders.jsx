@@ -22,10 +22,10 @@ const MyOrders = ({ devcart }) => {
   const getOrderData = async () => {
     setLoader(true);
     let count = await devcart.orderCount(accountDetails.address);
-    setOrderCount(count);
+    setOrderCount(count._hex);
     const currOrders = [];
     const CIDS = await devcart.getCIDs(accountDetails.address);
-    for (let i = 0; i < parseInt(count, 16); i++) {
+    for (let i = 0; i < parseInt(count._hex, 16); i++) {
       const response = await axios.get(`https://ipfs.io/ipfs/${CIDS[i]}`);
       currOrders.push(response.data);
     }
@@ -47,7 +47,6 @@ const MyOrders = ({ devcart }) => {
     return total;
   };
 
-  console.log(orders);
   return (
     <section className={styles.orders_section}>
       {loader ? (
