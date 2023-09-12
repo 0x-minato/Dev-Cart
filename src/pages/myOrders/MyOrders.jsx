@@ -5,12 +5,13 @@ import emptyCart from "../../assets/emptyCart.png";
 import Loader from "../../components/loader/Loader";
 import ethereum from "../../assets/ethereum.png";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const MyOrders = ({ devcart }) => {
   const [orderCount, setOrderCount] = useState(0);
   const [orders, setOrders] = useState([]);
   const [loader, setLoader] = useState(false);
+  const navigate = useNavigate();
   const accountDetails = useAccount();
   useEffect(() => {
     if (devcart) {
@@ -28,8 +29,14 @@ const MyOrders = ({ devcart }) => {
       const response = await axios.get(`https://ipfs.io/ipfs/${CIDS[i]}`);
       currOrders.push(response.data);
     }
-    setOrders(currOrders);
+    setOrders(currOrders.reverse());
     setLoader(false);
+  };
+
+  const orderDetails = (currOrder, orderNo) => {
+    navigate("/orderDetails", {
+      state: { currOrder, orderNo },
+    });
   };
 
   const getOrderTotal = (order) => {
@@ -40,6 +47,7 @@ const MyOrders = ({ devcart }) => {
     return total;
   };
 
+  console.log(orders);
   return (
     <section className={styles.orders_section}>
       {loader ? (
@@ -61,9 +69,13 @@ const MyOrders = ({ devcart }) => {
           <div className={styles.total_orders}>
             {orders.map((currOrder, index) => {
               return (
-                <div key={index} className={styles.current_order}>
+                <div
+                  onClick={() => orderDetails(currOrder, orders.length - index)}
+                  key={index}
+                  className={styles.current_order}
+                >
                   <div className={styles.current_header}>
-                    <h1>Order {index + 1}</h1>
+                    <h1>Order {orders.length - index}</h1>
                   </div>
                   <div className={styles.order_details}>
                     <div className={styles.items}>

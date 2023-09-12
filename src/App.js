@@ -11,6 +11,7 @@ import Footer from "./components/footer/Footer.jsx";
 import Login from "./pages/login/Login";
 import ShowHeaderAndFooter from "./utils/ShowHeaderAndFooter";
 import MyOrders from "./pages/myOrders/MyOrders.jsx";
+import OrderDetails from "./pages/orderDetails/OrderDetails.jsx";
 import Devcart from "./abis/devcart.json";
 import { useEffect } from "react";
 import { ethers } from "ethers";
@@ -92,6 +93,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/checkout" element={<Checkout checkout={checkout} />} />
         <Route path="/myorders" element={<MyOrders devcart={devcart} />} />
+        <Route path="/orderDetails" element={<OrderDetails />} />
         <Route path="/loader" element={<Loader />} />
       </Routes>
       <ShowHeaderAndFooter>
